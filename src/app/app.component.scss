@@ -1,0 +1,34 @@
+//variables
+$headerBack : rgb(53, 45, 45);
+$textColor : #ffffff;
+//styles
+header{
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  background-color: $headerBack;
+  align-items: center;
+  padding: 0 20px;
+}
+
+ul{
+  display: flex;
+  gap: 10px;
+  li{
+    a{
+      color:$textColor;
+      text-decoration: none;
+      background-color: rgb(19, 16, 16);
+      padding: 8px;
+      border-radius: 5px;
+    }
+  }
+}
+h1{
+  color:$textColor;
+  font-size: 20px;
+  text-transform: uppercase;
+  background-color: rgb(19, 16, 16);
+  padding: 8px;
+      border-radius: 5px;
+}

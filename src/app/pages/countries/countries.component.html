@@ -1,0 +1,3 @@
+<app-countries-list (changemodaltext)="changeModalText($event)" [countries$]="countries$">
+</app-countries-list>
+<app-modal *ngIf="modalText" [code]="modalText" ></app-modal>

@@ -1,0 +1,21 @@
+mat-list{
+  width: 35vw;
+  transform: translateX(57vw) translateY(-100%);
+}
+mat-list-item{
+  border: 2px solid #000;
+  border-bottom: none;
+  background-color:rgba($color: #fff, $alpha: 0.4);
+  &:last-child{
+    border-bottom: 2px solid #000;
+  }
+
+}
+span + span{
+  border-left: 2px solid #000;
+  height: 100%;
+  display: flex;align-items: center;
+  margin-left: 80px;
+  justify-content: center;
+  width: 50%;
+}

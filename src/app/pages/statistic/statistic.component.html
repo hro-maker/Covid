@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <div *ngIf="loading;else elseBlock">
+    loading....................
+  </div>
+    <ng-template #elseBlock>
+      <div class="min_wrapper">
+        <app-chart [statistic]="statics$"></app-chart>
+         <app-statisticdata
+         [statistic$]="statics$"
+         [date]="date"
+         ></app-statisticdata>
+      </div>
+      <form >
+        <mat-label>Current date</mat-label>
+        <mat-form-field  appearance="outline">
+        <input type="date" matInput  #input [(ngModel)]="date" name="date" id="date">
+        </mat-form-field>
+        </form>
+    </ng-template>
+</div>

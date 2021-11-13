@@ -1,0 +1,49 @@
+.wrapper{
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+ng-container{
+  border: 2px solid black;
+}
+.mat-header-row{
+  display: flex;
+}
+.mat-header-cell {
+  border: 2px solid black;
+  flex: 1 1 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.mat-row{
+    display: flex;
+}
+.mat-cell {
+  overflow: hidden;
+  border: 2px solid black;
+  flex: 1 1 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+table{
+  width: 25vw;
+}
+td.mat-cell{
+  padding-left: 0;
+}
+td.mat-cell:first-of-type,.mat-header-cell:first-of-type{
+  padding-left: 0 ;
+  flex-basis: 10%;
+}
+td.mat-cell:last-of-type,.mat-header-cell:last-of-type{
+  flex-basis: 10%;
+}
+td.mat-cell,.mat-header-cell{
+  padding: 7px;
+}
