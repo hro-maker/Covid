@@ -3,23 +3,35 @@ import { CommonModule } from '@angular/common';
 import { CountriesComponent } from './countries.component';
 import { CountriesServise } from './../../servises/countries.servise';
 import { CountriesListComponent } from 'src/app/components/countries-list/countries-list.component';
-import {MatTableModule} from '@angular/material/table';
-import { MatListModule } from '@angular/material/list';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { ModalComponent } from './../../components/modal/modal.component';
+import { MatCardModule } from '@angular/material/card';
+import { StatisticModule } from '../statistic/statistic.module';
+import { BarChartComponent } from 'src/app/components/bar-chart/bar-chart.component';
+import * as echarts from 'echarts';
+import { NgxEchartsModule } from 'ngx-echarts';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     CountriesComponent,
     CountriesListComponent,
-    ModalComponent
+    ModalComponent,
+    BarChartComponent,
   ],
   imports: [
-MatPaginatorModule,
-  CommonModule,
-  MatTableModule
+    MatPaginatorModule,
+    CommonModule,
+    MatTableModule,
+    MatCardModule,
+    StatisticModule,
+    MatSlideToggleModule,
+    NgxEchartsModule.forRoot({
+      echarts,
+    }),
+    ReactiveFormsModule
   ],
-  providers:[
-    CountriesServise
-  ]
+  providers: [CountriesServise],
 })
-export class CountriesModule { }
+export class CountriesModule {}

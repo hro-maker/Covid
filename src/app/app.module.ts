@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FilterArr } from './pipes';
 import { CountriesModule } from './pages/countries/countries.module';
 import { CountriesListComponent } from './components/countries-list/countries-list.component';
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 @NgModule({
   declarations: [
     AppComponent,

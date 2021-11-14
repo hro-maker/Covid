@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from "@angular/core";
+import { Pipe,PipeTransform } from "@angular/core";
 import { IStatistic } from "./types/statistic";
 
 @Pipe({name: 'filterArray'})
@@ -17,3 +17,15 @@ export class Sum implements PipeTransform {
     },0) :0
   }
 }
+// type fileadname ="allLast" | "newLast"
+// @Pipe({name:"date"})
+// export class DateFilter implements PipeTransform {
+//   transform(value: IStatistic[] | undefined,field:fileadname) {
+//    const isLast=JSON.parse(localStorage.getItem(field )as string)
+//    if(isLast){
+//      return value?.filter(el=>{
+//        el.
+//      })
+//    }
+//   }
+// }

@@ -30,6 +30,7 @@ CommonModule,
     echarts
   })
   ],
+  exports:[ChartComponent],
   providers:[StatisticServise]
 })
 export class StatisticModule { }

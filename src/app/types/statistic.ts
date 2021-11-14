@@ -1,6 +1,16 @@
 
 
-
+export interface IStatistic{
+  "updated_at": Date,
+  "date": string,
+  "deaths": number,
+  "confirmed": number,
+  "recovered": number,
+  "new_confirmed": number,
+  "new_recovered": number,
+  "new_deaths": number,
+  "active": number
+}
 export interface ICountries{
   "coordinates": {
       "latitude": number,
@@ -26,16 +36,7 @@ export interface ICountries{
           "cases_per_million_population": number | null
       }
   }
+  timeline:IStatistic[]
 }
 
-export interface IStatistic{
-  "updated_at": Date,
-  "date": string,
-  "deaths": number,
-  "confirmed": number,
-  "recovered": number,
-  "new_confirmed": number,
-  "new_recovered": number,
-  "new_deaths": number,
-  "active": number
-}
+

@@ -1,69 +1,92 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IStatistic } from 'src/app/types/statistic';
+import { getTime } from './../../helpers';
+import { CountriesServise } from './../../servises/countries.servise';
 
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.scss']
 })
-export class ChartComponent implements OnInit {
+export class ChartComponent implements AfterViewInit {
   countryCasesChartOptions: any;
   cases: IStatistic[] = [];
+  @Input()isCountry?:boolean
   @Input()statistic!:Observable<{data:IStatistic[]}>
-  constructor() {
+  constructor(private countrieServise:CountriesServise) {
    }
+   setapOptions(arr:IStatistic[]){
+     const result={
+      title: {
+        text: 'COVID-19 STATUS CHART',
+      },
+      legend: {
+
+        data: ['Confirmed', 'Recovered', 'Deaths'],
+      },
+      tooltip: {
+        trigger: 'item',
+        showDelay: 0,
+        transitionDuration: 0.2,
+      },
+      xAxis: {
+        data: arr
+          .map((c) => new Date(c.date).toLocaleDateString())
+          .reverse(),
+          StyleSheetList:{
+              color:"white"
+          }
+      },
+      yAxis: {
+        type: 'value',
+      },
+      series: [
+        {
+          name: 'Confirmed',
+          type: 'line',
+          data: arr
+            .map((c) => {
+              return c.confirmed;
+            })
+            .reverse(),
+
+        },
+        {
+          name: 'Recovered',
+          type: 'line',
+          data: arr.map((c) => c.recovered).reverse(),
+        },
+        {
+          name: 'Deaths',
+          type: 'line',
+          data: arr.map((c) => c.deaths).reverse(),
+        },
+      ],
+    };
+    return result
+   }
+  ngAfterViewInit() {
+      if(this.isCountry){
+        this.countrieServise.allLast$.subscribe(e=>{
+          const filter=(arr:IStatistic[]):IStatistic[]=>{
+            return this.isCountry && e ? arr.filter(el=>{
+               const answer=   new Date().getTime() - new Date(el.date).getTime()<= 2629800000 * 3
+               console.log(el.date,answer)
+               return answer
+             }
+               ) : arr
+           }
+           this.countryCasesChartOptions=this.setapOptions(filter(this.cases))
+        })
+      }
+
+  }
 
   ngOnInit(): void {
     this.statistic.subscribe(el=>{
       this.cases = el.data;
-      this.countryCasesChartOptions = {
-        title: {
-          text: 'COVID-19 STATUS CHART',
-        },
-        legend: {
-
-          data: ['Confirmed', 'Recovered', 'Deaths'],
-        },
-        tooltip: {
-          trigger: 'item',
-          showDelay: 0,
-          transitionDuration: 0.2,
-        },
-        xAxis: {
-          data: this.cases
-            .map((c) => new Date(c.date).toLocaleDateString())
-            .reverse(),
-            StyleSheetList:{
-                color:"white"
-            }
-        },
-        yAxis: {
-          type: 'value',
-        },
-        series: [
-          {
-            name: 'Confirmed',
-            type: 'line',
-            data: this.cases
-              .map((c) => {
-                return c.confirmed;
-              })
-              .reverse(),
-
-          },
-          {
-            name: 'Recovered',
-            type: 'line',
-            data: this.cases.map((c) => c.recovered).reverse(),
-          },
-          {
-            name: 'Deaths',
-            type: 'line',
-            data: this.cases.map((c) => c.deaths).reverse(),
-          },
-        ],
-      };
+      this.countryCasesChartOptions = this.setapOptions(this.cases)
     })
   }
 

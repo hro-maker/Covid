@@ -4,7 +4,9 @@
   </div>
     <ng-template #elseBlock>
       <div class="min_wrapper">
-        <app-chart [statistic]="statics$"></app-chart>
+        <div class="chart__wrapper">
+          <app-chart [statistic]="statics$"></app-chart>
+        </div>
          <app-statisticdata
          [statistic$]="statics$"
          [date]="date"

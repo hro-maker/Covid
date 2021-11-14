@@ -1,5 +1,65 @@
-<div class="modal__wrapper">
-      <div class="modal__body">
-        hhhhhh
-      </div>
+<div (click)="close($event)" class="modal__wrapper">
+  <span (click)="changemodaltext.emit('')">&times;</span>
+
+        <mat-card *ngIf="countrie;else elseBlock" class="modal__body">
+          <mat-card-header>
+            <mat-card-title>{{countrie.name}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+              <div class="left">
+                <mat-card-title>  information</mat-card-title>
+                <table>
+                  <tr>
+                    <th>population</th>
+                    <th>updated at</th>
+                    <th>death rate</th>
+                    <th>recovered rate</th>
+                    <th>% of cases 1 million population</th>
+                    <th>Total number of cases</th>
+                  </tr>
+                  <tr>
+                    <td>{{countrie.population || 0}}</td>
+                    <td>{{countrie.updated_at | date:"YYYY-MM-dd"}}</td>
+                    <td>{{(countrie.latest_data.calculated.death_rate | number:'1.0-3')  || 0}} %</td>
+                    <td>{{(countrie.latest_data.calculated.recovery_rate | number:'1.0-3')  || 0}} %</td>
+                    <td>{{(countrie.latest_data.calculated.cases_per_million_population| number:'1.0-3')  || 0}} %</td>
+                    <td>{{countrie?.timeline?.[0]?.confirmed  || 0}} </td>
+                  </tr>
+                </table>
+                <table>
+                  <tr>
+                    <th>Number of current date cases</th>
+                    <th>Total number of deaths</th>
+                    <th>Number of deaths of current date</th>
+                    <th>Total number of recoveries</th>
+                    <th>Number of current date recoveries</th>
+                  </tr>
+                  <tr>
+                    <td>{{countrie?.timeline?.[0]?.new_confirmed || 0}} </td>
+                    <td>{{countrie?.timeline?.[0]?.deaths || 0}}</td>
+                    <td>{{countrie?.timeline?.[0]?.new_deaths || 0}}</td>
+                    <td>{{countrie?.timeline?.[0]?.new_recovered || 0}}</td>
+                    <td>{{countrie?.timeline?.[0]?.recovered || 0}}</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="right">
+                <mat-card-title>  statistic</mat-card-title>
+                <form [formGroup]="form">
+                  <label class="switch">
+                    <input type="checkbox"  formControlName="checked">
+                    <span class="slider round"></span>
+                   <div> last 3 month</div>
+                  </label>
+                </form>
+                <app-chart [isCountry]="true" [statistic]="statics$"></app-chart>
+                <app-bar-chart [countrie]="countrie "></app-bar-chart>
+              </div>
+          </mat-card-content>
+        </mat-card>
+      <ng-template style="background-color: white;" #elseBlock>
+          <div class="loader">
+            loading......
+          </div>
+      </ng-template>
 </div>
