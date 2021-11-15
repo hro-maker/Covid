@@ -1,0 +1,33 @@
+{
+    "label":"Corona tracker",
+    "statistic":"STATISTIC",
+    "info":"information",
+    "3months":"last 3 month",
+    "total":{
+      "cases":"Total number of cases",
+      "deaths":"Total number of deaths",
+      "recoveries":"Total number of recoveries"
+    },
+    "current":{
+      "cases":"Number of current date cases",
+      "deaths":"The number of deaths of the current date",
+      "recoveries":"Number of current date recoveries"
+    },
+    "country":{
+      "population":"population",
+      "updatedAt":"updated at",
+      "deathRate":"death rate",
+      "recoveredRate":"recovered rate",
+      "casesMillion":"% of cases 1 million population",
+      "total":{
+        "cases":"Total number of cases",
+        "deaths":"Total number of deaths",
+        "recoveries":"Total number of recoveries"
+      },
+      "current":{
+        "cases":"Number of current date cases",
+        "deaths":"The number of deaths of the current date",
+        "recoveries":"Number of current date recoveries"
+      }
+    }
+}

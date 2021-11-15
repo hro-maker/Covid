@@ -13,6 +13,7 @@ import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   declarations: [
     CountriesComponent,
@@ -21,6 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BarChartComponent,
   ],
   imports: [
+
+  TranslateModule,
     MatPaginatorModule,
     CommonModule,
     MatTableModule,

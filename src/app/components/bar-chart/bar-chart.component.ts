@@ -1,63 +1,28 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { EChartsOption } from 'echarts';
-import { ICountries } from 'src/app/types/statistic';
+import { filter, setapCountryOptions } from 'src/app/helpers';
+import { ICountries, IStatistic } from 'src/app/types/statistic';
+import { CountriesServise } from './../../servises/countries.servise';
 
 @Component({
   selector: 'app-bar-chart',
   templateUrl: './bar-chart.component.html',
   styleUrls: ['./bar-chart.component.scss']
 })
-export class BarChartComponent implements OnInit {
+export class BarChartComponent implements AfterViewInit {
   @Input()countrie!:ICountries | null
   options!: EChartsOption
 
-  constructor() {
-
+  constructor(private countryServise:CountriesServise) {
    }
+  ngAfterViewInit(): void {
+    this.countryServise.newLast$.subscribe(e=>{
+          this.options=setapCountryOptions(filter(this.countrie?.timeline as IStatistic[],e))
+    })
+  }
 
   ngOnInit(): void {
-    this.options = {
-      xAxis: {
-        type: 'category',
-        data: this.countrie?.timeline
-            .map((c) => new Date(c.date).toLocaleDateString())
-            .reverse(),
-      },
-      legend: {
-
-        data: ['Confirmed', 'Recovered', 'Deaths'],
-      },
-      yAxis: {
-        type: 'value'
-      },
-      tooltip: {
-        trigger: 'item',
-        showDelay: 0,
-        transitionDuration: 0.2,
-      },
-      series: [
-        {
-                name: 'Confirmed',
-                  type: 'bar',
-                  data: this.countrie?.timeline
-                    .map((c) => {
-                      return c.new_confirmed;
-                    })
-                    .reverse(),
-
-                },
-                {
-                  name: 'Recovered',
-                  type: 'bar',
-                  data: this.countrie?.timeline.map((c) => c.new_recovered).reverse(),
-                },
-                {
-                  name: 'Deaths',
-                  type: 'bar',
-                  data: this.countrie?.timeline.map((c) => c.new_deaths).reverse(),
-                },
-      ]
-    };
+    this.options = setapCountryOptions(this.countrie?.timeline as IStatistic[])
   }
 
 }

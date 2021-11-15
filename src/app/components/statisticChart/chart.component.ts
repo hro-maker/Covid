@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IStatistic } from 'src/app/types/statistic';
-import { getTime } from './../../helpers';
+import { filter, getTime } from './../../helpers';
 import { CountriesServise } from './../../servises/countries.servise';
 
 @Component({
@@ -69,20 +69,11 @@ export class ChartComponent implements AfterViewInit {
   ngAfterViewInit() {
       if(this.isCountry){
         this.countrieServise.allLast$.subscribe(e=>{
-          const filter=(arr:IStatistic[]):IStatistic[]=>{
-            return this.isCountry && e ? arr.filter(el=>{
-               const answer=   new Date().getTime() - new Date(el.date).getTime()<= 2629800000 * 3
-               console.log(el.date,answer)
-               return answer
-             }
-               ) : arr
-           }
-           this.countryCasesChartOptions=this.setapOptions(filter(this.cases))
+           this.countryCasesChartOptions=this.setapOptions(filter(this.cases,e))
         })
       }
 
   }
-
   ngOnInit(): void {
     this.statistic.subscribe(el=>{
       this.cases = el.data;

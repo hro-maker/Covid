@@ -1,27 +1,27 @@
 <mat-list role="list">
 
   <mat-list-item >
-    <span>Total number of cases </span>
+    <span>{{"total.cases" | translate}} </span>
     <span> {{(statistic$ | async )?.data| sumArr:'confirmed'}} </span>
   </mat-list-item>
   <mat-list-item >
-    <span>Number of current date cases</span>
+    <span>{{"current.cases" | translate}}</span>
     <span> {{(statistic$ | async )?.data|filterArray:date | sumArr:'confirmed'}} </span>
   </mat-list-item>
   <mat-list-item >
-    <span>Total number of deaths</span>
+    <span>{{"total.deaths" | translate}}</span>
     <span> {{(statistic$ | async )?.data| sumArr:'deaths'}} </span>
   </mat-list-item>
   <mat-list-item >
-    <span>The number of deaths of the current date</span>
+    <span>{{"current.deaths" | translate}}</span>
     <span> {{(statistic$ | async )?.data |filterArray:date| sumArr:'deaths'}} </span>
   </mat-list-item>
   <mat-list-item >
-    <span>Total number of recoveries</span>
+    <span>{{"total.recoveries" | translate}}</span>
     <span> {{(statistic$ | async )?.data| sumArr:'recovered'}} </span>
   </mat-list-item>
   <mat-list-item >
-    <span>Number of current date recoveries</span>
+    <span>{{"current.recoveries" | translate}}</span>
     <span> {{(statistic$ | async )?.data |filterArray:date| sumArr:'recovered'}} </span>
   </mat-list-item>
 </mat-list>

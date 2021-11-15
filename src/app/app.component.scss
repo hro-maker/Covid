@@ -1,34 +1,26 @@
-//variables
-$headerBack : rgb(53, 45, 45);
-$textColor : #ffffff;
-//styles
-header{
-  display: flex;
-  justify-content: space-between;
-  height: 50px;
-  background-color: $headerBack;
-  align-items: center;
-  padding: 0 20px;
+.wrapper{
+  margin-top: 50px;
+}
+select{
+    position: fixed;
+    top: 10px;
+    left: 40%;
+    z-index: 30;
+    background-color: #000;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 7px;
 }
 
-ul{
-  display: flex;
-  gap: 10px;
-  li{
-    a{
-      color:$textColor;
-      text-decoration: none;
-      background-color: rgb(19, 16, 16);
-      padding: 8px;
-      border-radius: 5px;
-    }
-  }
+option{
+  background-color: rgb(15, 14, 14);
+  color: rgb(92, 78, 78);
+  border-radius: 5px;
 }
-h1{
-  color:$textColor;
-  font-size: 20px;
-  text-transform: uppercase;
-  background-color: rgb(19, 16, 16);
-  padding: 8px;
-      border-radius: 5px;
+option{
+  &:disabled{
+    color: rgb(71, 68, 68);
+  }
 }

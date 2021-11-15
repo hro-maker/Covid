@@ -1,15 +1,18 @@
-  <header>
-    <h1>corona tracker</h1>
-    <nav>
-      <ul>
-        <li>
-            <a routerLink="">Timelines</a>
-        </li>
-        <li>
-          <a routerLink="countries">Countries</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-  <router-outlet></router-outlet>
+<app-header></app-header>
+  <div class="wrapper">
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>language</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let option of languageOptions" [value]="option.value">
+          {{option.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> -->
+
+      <select class="custom-select" (change)="changelanguageName($event)" formControlName="cityName">
+        <option value="" disabled>Choose Language</option>
+        <option *ngFor="let lang of languageOptions" [value]="lang.value">{{lang.label}}</option>
+    </select>
+    <router-outlet></router-outlet>
+  </div>
 

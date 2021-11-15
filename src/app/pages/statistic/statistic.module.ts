@@ -12,6 +12,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 
 import { ChartComponent } from '../../components/statisticChart/chart.component';
 import { StatisticdataComponent } from '../../components/statisticdata/statisticdata.component';
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   declarations: [
     StatisticComponent,
@@ -26,6 +27,7 @@ CommonModule,
   MatInputModule,
   MatFormFieldModule,
   MatListModule,
+  TranslateModule,
   NgxEchartsModule.forRoot({
     echarts
   })

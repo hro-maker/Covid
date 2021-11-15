@@ -1,0 +1,52 @@
+//variables
+$headerBack : rgb(53, 45, 45);
+$textColor : #ffffff;
+//styles
+header{
+  z-index: 20;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  height: 50px;
+  justify-content: space-between;
+  background-color: $headerBack;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+ul{
+  display: flex;
+  gap: 10px;
+
+}
+h1{
+  color:inherit;
+  font-size: 20px;
+  text-transform: uppercase;
+  background-color: rgb(19, 16, 16);
+
+    border-radius: 5px;
+    text-decoration: none;
+  background-color:inherit;
+
+}
+.mat-select {
+  position: relative;
+  width: 100px;
+}
+
+
+a{
+  color:$textColor;
+  text-decoration: none;
+  background-color: rgb(19, 16, 16);
+  padding: 8px;
+  border-radius: 5px;
+  &:hover{
+    background-color: white;
+    color: black;
+  }
+}

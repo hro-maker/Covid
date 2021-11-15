@@ -15,7 +15,8 @@ export class ModalComponent implements AfterViewInit {
   @Output() changemodaltext: EventEmitter<string> = new EventEmitter();
   countrie: ICountries | null = null;
   form=new FormGroup({
-    checked : new FormControl(false)
+    checked : new FormControl(false),
+    checked2:new FormControl(false)
   })
   statics$!: Observable<{ data: IStatistic[] }>;
   constructor(private countriesservise: CountriesServise) {}
@@ -23,6 +24,9 @@ export class ModalComponent implements AfterViewInit {
     this.form.get('checked')?.valueChanges.subscribe(e=>{
        this.countriesservise.setallLast(e)
     })
+    this.form.get('checked2')?.valueChanges.subscribe(e=>{
+      this.countriesservise.setnewLast(e)
+   })
   }
   ngOnInit(): void {
     this.countriesservise.getCountrie(this.code).subscribe((e) => {

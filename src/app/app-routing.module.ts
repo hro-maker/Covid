@@ -5,8 +5,8 @@ import { StatisticComponent } from './pages/statistic/statistic.component';
 
 import { StatisticModule } from './pages/statistic/statistic.module';
 const routes: Routes = [
-  {path:"",component:StatisticComponent},
-  {path:'countries',component:CountriesComponent}
+  {path:"timelines",component:StatisticComponent},
+  {path:'',component:CountriesComponent}
 ];
 
 @NgModule({

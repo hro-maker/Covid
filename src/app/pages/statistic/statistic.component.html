@@ -4,13 +4,13 @@
   </div>
     <ng-template #elseBlock>
       <div class="min_wrapper">
+        <app-statisticdata
+        [statistic$]="statics$"
+        [date]="date"
+        ></app-statisticdata>
         <div class="chart__wrapper">
           <app-chart [statistic]="statics$"></app-chart>
         </div>
-         <app-statisticdata
-         [statistic$]="statics$"
-         [date]="date"
-         ></app-statisticdata>
       </div>
       <form >
         <mat-label>Current date</mat-label>
