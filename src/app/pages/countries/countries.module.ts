@@ -12,7 +12,7 @@ import { BarChartComponent } from 'src/app/components/bar-chart/bar-chart.compon
 import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   declarations: [
@@ -30,6 +30,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatCardModule,
     StatisticModule,
     MatSlideToggleModule,
+    FormsModule,
     NgxEchartsModule.forRoot({
       echarts,
     }),
