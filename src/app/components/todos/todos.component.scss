@@ -1,0 +1,23 @@
+.wrr{
+  margin: auto;
+  margin-top: 200px;
+  display: block;
+  width: 500px;
+  background-color: rgb(104, 84, 84);
+  padding: 40px;
+}
+li{
+  height: 30px;
+  margin: 10px;
+  border: 2px solid white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+div{
+  margin-right: 20px;
+  color: white;
+  font-size: 30px;
+  cursor:pointer;
+}

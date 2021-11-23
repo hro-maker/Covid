@@ -14,10 +14,16 @@ import {MatSelectModule} from '@angular/material/select';
 import { TranslateModule } from '@ngx-translate/core';
 import { translateModuleConfig } from './app.i18n';
 import { HeaderComponent } from './components/header/header.component';
+import { TodosComponent } from './components/todos/todos.component';
+import { StoreModule } from '@ngrx/store';
+import { todosReducer } from './redux/reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { TodoEffect } from './redux/effects';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    TodosComponent,
   ],
   imports: [
   BrowserModule,
@@ -29,6 +35,10 @@ import { HeaderComponent } from './components/header/header.component';
     BrowserAnimationsModule,
     CountriesModule,
     TranslateModule.forRoot(translateModuleConfig),
+    StoreModule.forRoot({
+      todo:todosReducer
+    }),
+    EffectsModule.forRoot([TodoEffect])
   ],
   exports:[],
   providers: [],
