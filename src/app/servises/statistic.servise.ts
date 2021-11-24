@@ -14,8 +14,13 @@ export class StatisticServise{
       getTimeLine():Observable<{data:IStatistic[]}>{
          return   this.http.get<{data:IStatistic[]}>('https://corona-api.com/timeline')
       }
-      loadTodos():Observable<Itodo[]>{
-          return this.http.get<Itodo[]>('https://jsonplaceholder.typicode.com/todos')
+      loadTodos({page=1,limit=10}:{page:number,limit:number}):Observable<Itodo[]>{
+          return this.http.get<Itodo[]>('https://jsonplaceholder.typicode.com/todos',{
+            params:{
+              _limit: limit,
+              _page: page
+            }
+          })
       }
 
 }

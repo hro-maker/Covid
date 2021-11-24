@@ -8,24 +8,11 @@ export interface Itodo{
 }
 export interface InitialState{todos:Itodo[]}
 export const initialState:InitialState = {
-    todos:[
-      {
-        "userId": 1,
-        "id": 1,
-        "title": "delectus aut autem",
-        "completed": true
-      },
-      {
-        "userId": 1,
-        "id": 2,
-        "title": "quis ut nam facilis et officia qui",
-        "completed": false
-      },
-    ]
+    todos:[]
 };
 
 export const todosReducer=createReducer(
   initialState,
   on(actions.addTodo,(state,action)=>({...state,todos:[...state.todos,action.todo]})),
-  on(actions.loadTodosSuccesAction,(state,action)=>({...state,todos:action.todos}))
+  on(actions.loadTodosSuccesAction,(state,action)=>({...state,todos:[...state.todos,...action.todos]}))
 )

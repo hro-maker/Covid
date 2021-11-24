@@ -5,6 +5,10 @@
   width: 500px;
   background-color: rgb(104, 84, 84);
   padding: 40px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
 }
 li{
   height: 30px;

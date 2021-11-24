@@ -2,10 +2,11 @@
   <ul class="wrr">
     <li *ngFor="let todo of todos$ | async">
       <input type="checkbox" [checked]="todo.completed">
-        {{todo.title}}
+         <p>{{todo.id}}</p>  {{todo.title}}
         <div>
           &times;
         </div>
     </li>
+    <div #load class="loaddd">loadddddddddd</div>
   </ul>
 
